@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Artillery report</title>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js' charset='utf-8'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.6.0/metricsgraphics.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/metrics-graphics/2.6.0/metricsgraphics.min.js"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js" charset="utf-8"></script>
+
+  <style>
+  body, p, li {
+    font-family: sans-serif;
+    font-size: 10pt;
+  }
+
+  h1 {
+    font-size: 18pt;
+    font-weight: bold;
+  }
+
+  #errorsContainer > p {
+    color: #009900;
+  }
+
+  #footer {
+    padding: 1em;
+    font-size: 0.8em;
+    color: #999;
+    text-align: center;
+    margin-top: 1em;
+    background-color: #eee;
+  }
+  #editor {
+    font-size: 8pt;
+    height: 20em;
+  }
+  </style>
+
+  <script>
+  window.Report = {
+  "aggregate": {
+    "timestamp": "2017-06-01T01:55:40.396Z",
+    "scenariosCreated": 60,
+    "scenariosCompleted": 60,
+    "requestsCompleted": 180,
+    "latency": {
+      "min": 5.4,
+      "max": 454.4,
+      "median": 259.5,
+      "p95": 430.4,
+      "p99": 439
+    },
+    "rps": {
+      "count": 180,
+      "mean": 3
+    },
+    "scenarioDuration": {
+      "min": 609.4,
+      "max": 748.8,
+      "median": 690.5,
+      "p95": 736.4,
+      "p99": 748.4
+    },
+    "scenarioCounts": {
+      "0": 60
+    },
+    "errors": {},
+    "codes": {
+      "200": 180
+    },
+    "matches": 0,
+    "customStats": {},
+    "phases": [
+      {
+        "duration": 60,
+        "arrivalRate": 1
+      }
+    ]
+  },
+  "intermediate": [
+    {
+      "timestamp": "2017-06-01T01:54:48.975Z",
+      "scenariosCreated": 8,
+      "scenariosCompleted": 8,
+      "requestsCompleted": 24,
+      "latency": {
+        "min": 6,
+        "max": 437.8,
+        "median": 260.4,
+        "p95": 435.6,
+        "p99": null
+      },
+      "rps": {
+        "count": 24,
+        "mean": 2.8
+      },
+      "scenarioDuration": {
+        "min": 628,
+        "max": 735.2,
+        "median": 713,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "0": 8
+      },
+      "errors": {},
+      "codes": {
+        "200": 24
+      },
+      "matches": 0,
+      "latencies": [
+        [
+          1496282080414,
+          "78394764-1c1e-442a-8c0b-98107a1c4c45",
+          12639765,
+          200
+        ],
+        [
+          1496282080855,
+          "78394764-1c1e-442a-8c0b-98107a1c4c45",
+          431809678,
+          200
+        ],
+        [
+          1496282081100,
+          "78394764-1c1e-442a-8c0b-98107a1c4c45",
+          242552552,
+          200
+        ],
+        [
+          1496282081391,
+          "85231a9e-eb59-4068-b6f7-67736e95539f",
+          6587682,
+          200
+        ],
+        [
+          1496282081828,
+          "85231a9e-eb59-4068-b6f7-67736e95539f",
+          434629060,
+          200
+        ],
+        [
+          1496282082091,
+          "85231a9e-eb59-4068-b6f7-67736e95539f",
+          261339177,
+          200
+        ],
+        [
+          1496282082389,
+          "043c6e63-c7f4-493f-91ab-8b20f8759036",
+          6047068,
+          200
+        ],
+        [
+          1496282082807,
+          "043c6e63-c7f4-493f-91ab-8b20f8759036",
+          415716433,
+          200
+        ],
+        [
+          1496282083111,
+          "043c6e63-c7f4-493f-91ab-8b20f8759036",
+          302468810,
+          200
+        ],
+        [
+          1496282083393,
+          "69f19e9b-0277-432c-ba64-4e22deeadc10",
+          7970805,
+          200
+        ],
+        [
+          1496282083809,
+          "69f19e9b-0277-432c-ba64-4e22deeadc10",
+          414276160,
+          200
+        ],
+        [
+          1496282084117,
+          "69f19e9b-0277-432c-ba64-4e22deeadc10",
+          306064475,
+          200
+        ],
+        [
+          1496282084390,
+          "98b41ef6-8e4d-493a-891f-8d1a7db02c34",
+          5971521,
+          200
+        ],
+        [
+          1496282084816,
+          "98b41ef6-8e4d-493a-891f-8d1a7db02c34",
+          425544222,
+          200
+        ],
+        [
+          1496282085116,
+          "98b41ef6-8e4d-493a-891f-8d1a7db02c34",
+          296721530,
+          200
+        ],
+        [
+          1496282085393,
+          "db164c81-70b7-485f-be52-d38f9810ef01",
+          7368445,
+          200
+        ],
+        [
+          1496282085798,
+          "db164c81-70b7-485f-be52-d38f9810ef01",
+          401840905,
+          200
+        ],
+        [
+          1496282086055,
+          "db164c81-70b7-485f-be52-d38f9810ef01",
+          255250042,
+          200
+        ],
+        [
+          1496282086390,
+          "bc838923-c844-42c1-8536-a3172564ed4e",
+          6893254,
+          200
+        ],
+        [
+          1496282086829,
+          "bc838923-c844-42c1-8536-a3172564ed4e",
+          437756157,
+          200
+        ],
+        [
+          1496282087091,
+          "bc838923-c844-42c1-8536-a3172564ed4e",
+          259487268,
+          200
+        ],
+        [
+          1496282087390,
+          "89867457-47a5-4960-bd50-4da7c6f3cd3b",
+          7017361,
+          200
+        ],
+        [
+          1496282087788,
+          "89867457-47a5-4960-bd50-4da7c6f3cd3b",
+          396665169,
+          200
+        ],
+        [
+          1496282088010,
+          "89867457-47a5-4960-bd50-4da7c6f3cd3b",
+          220281945,
+          200
+        ]
+      ],
+      "customStats": {},
+      "concurrency": 0,
+      "pendingRequests": 0
+    },
+    {
+      "timestamp": "2017-06-01T01:54:58.984Z",
+      "scenariosCreated": 10,
+      "scenariosCompleted": 10,
+      "requestsCompleted": 30,
+      "latency": {
+        "min": 5.7,
+        "max": 431.9,
+        "median": 265.2,
+        "p95": 425.1,
+        "p99": null
+      },
+      "rps": {
+        "count": 30,
+        "mean": 2.83
+      },
+      "scenarioDuration": {
+        "min": 676.9,
+        "max": 706.5,
+        "median": 688.6,
+        "p95": 706.5,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "0": 10
+      },
+      "errors": {},
+      "codes": {
+        "200": 30
+      },
+      "matches": 0,
+      "latencies": [
+        [
+          1496282088390,
+          "e6139175-e701-4b00-8da2-ec8d9d80a323",
+          6767636,
+          200
+        ],
+        [
+          1496282088799,
+          "e6139175-e701-4b00-8da2-ec8d9d80a323",
+          407954317,
+          200
+        ],
+        [
+          1496282089088,
+          "e6139175-e701-4b00-8da2-ec8d9d80a323",
+          287891530,
+          200
+        ],
+        [
+          1496282089389,
+          "1c921f12-9db6-4ea7-a1c3-53de66fcc285",
+          5716897,
+          200
+        ],
+        [
+          1496282089809,
+          "1c921f12-9db6-4ea7-a1c3-53de66fcc285",
+          418978461,
+          200
+        ],
+        [
+          1496282090063,
+          "1c921f12-9db6-4ea7-a1c3-53de66fcc285",
+          251295984,
+          200
+        ],
+        [
+          1496282090390,
+          "fd5926b2-559b-4739-b754-4c3a72e290d6",
+          6352850,
+          200
+        ],
+        [
+          1496282090823,
+          "fd5926b2-559b-4739-b754-4c3a72e290d6",
+          431864294,
+          200
+        ],
+        [
+          1496282091084,
+          "fd5926b2-559b-4739-b754-4c3a72e290d6",
+          259228712,
+          200
+        ],
+        [
+          1496282091389,
+          "8051223c-d2ea-4f78-9c01-b9e3e4f1063f",
+          6264082,
+          200
+        ],
+        [
+          1496282091801,
+          "8051223c-d2ea-4f78-9c01-b9e3e4f1063f",
+          410215866,
+          200
+        ],
+        [
+          1496282092087,
+          "8051223c-d2ea-4f78-9c01-b9e3e4f1063f",
+          283654581,
+          200
+        ],
+        [
+          1496282092390,
+          "92e54667-a91f-4b95-a175-275e1aec8db9",
+          6532235,
+          200
+        ],
+        [
+          1496282092795,
+          "92e54667-a91f-4b95-a175-275e1aec8db9",
+          403570535,
+          200
+        ],
+        [
+          1496282093058,
+          "92e54667-a91f-4b95-a175-275e1aec8db9",
+          261201265,
+          200
+        ],
+        [
+          1496282093390,
+          "9fed1a20-5724-45fc-99d7-7921ba13c940",
+          6491016,
+          200
+        ],
+        [
+          1496282093798,
+          "9fed1a20-5724-45fc-99d7-7921ba13c940",
+          407312781,
+          200
+        ],
+        [
+          1496282094067,
+          "9fed1a20-5724-45fc-99d7-7921ba13c940",
+          267880678,
+          200
+        ],
+        [
+          1496282094390,
+          "dc1e8999-9837-4fad-8dc3-d4ac51bb48d0",
+          6641576,
+          200
+        ],
+        [
+          1496282094791,
+          "dc1e8999-9837-4fad-8dc3-d4ac51bb48d0",
+          398340511,
+          200
+        ],
+        [
+          1496282095068,
+          "dc1e8999-9837-4fad-8dc3-d4ac51bb48d0",
+          275880162,
+          200
+        ],
+        [
+          1496282095391,
+          "651414c9-b6fd-4e96-8646-6f204702923f",
+          6459061,
+          200
+        ],
+        [
+          1496282095818,
+          "651414c9-b6fd-4e96-8646-6f204702923f",
+          425060476,
+          200
+        ],
+        [
+          1496282096072,
+          "651414c9-b6fd-4e96-8646-6f204702923f",
+          253565039,
+          200
+        ],
+        [
+          1496282096389,
+          "d6ac975a-15cb-47c0-b55b-ebdd3032083e",
+          6295959,
+          200
+        ],
+        [
+          1496282096804,
+          "d6ac975a-15cb-47c0-b55b-ebdd3032083e",
+          412350510,
+          200
+        ],
+        [
+          1496282097068,
+          "d6ac975a-15cb-47c0-b55b-ebdd3032083e",
+          262432324,
+          200
+        ],
+        [
+          1496282097389,
+          "11228955-381a-45ed-a72e-0a477cb89bb1",
+          5997528,
+          200
+        ],
+        [
+          1496282097793,
+          "11228955-381a-45ed-a72e-0a477cb89bb1",
+          402954287,
+          200
+        ],
+        [
+          1496282098085,
+          "11228955-381a-45ed-a72e-0a477cb89bb1",
+          290936667,
+          200
+        ]
+      ],
+      "customStats": {},
+      "concurrency": 0,
+      "pendingRequests": 0
+    },
+    {
+      "timestamp": "2017-06-01T01:55:08.987Z",
+      "scenariosCreated": 11,
+      "scenariosCompleted": 10,
+      "requestsCompleted": 30,
+      "latency": {
+        "min": 6,
+        "max": 437.1,
+        "median": 252.6,
+        "p95": 433.6,
+        "p99": null
+      },
+      "rps": {
+        "count": 30,
+        "mean": 2.83
+      },
+      "scenarioDuration": {
+        "min": 615.8,
+        "max": 705.1,
+        "median": 677.6,
+        "p95": 705.1,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "0": 11
+      },
+      "errors": {},
+      "codes": {
+        "200": 30
+      },
+      "matches": 0,
+      "latencies": [
+        [
+          1496282098391,
+          "b8d4c156-22a4-4ef8-b51e-fd60b8c2f26d",
+          6568310,
+          200
+        ],
+        [
+          1496282098772,
+          "b8d4c156-22a4-4ef8-b51e-fd60b8c2f26d",
+          378982359,
+          200
+        ],
+        [
+          1496282098997,
+          "b8d4c156-22a4-4ef8-b51e-fd60b8c2f26d",
+          221770726,
+          200
+        ],
+        [
+          1496282099389,
+          "9253da89-ebeb-4232-b527-86ec9b5005dc",
+          5951364,
+          200
+        ],
+        [
+          1496282099828,
+          "9253da89-ebeb-4232-b527-86ec9b5005dc",
+          437059905,
+          200
+        ],
+        [
+          1496282100057,
+          "9253da89-ebeb-4232-b527-86ec9b5005dc",
+          228321546,
+          200
+        ],
+        [
+          1496282100390,
+          "05ac476c-609e-4bd4-88fe-4f375ce4f2f1",
+          6763827,
+          200
+        ],
+        [
+          1496282100791,
+          "05ac476c-609e-4bd4-88fe-4f375ce4f2f1",
+          398758317,
+          200
+        ],
+        [
+          1496282101049,
+          "05ac476c-609e-4bd4-88fe-4f375ce4f2f1",
+          257141854,
+          200
+        ],
+        [
+          1496282101389,
+          "d5113a8a-e61a-4df2-b5ad-cfbc85447d6f",
+          6762206,
+          200
+        ],
+        [
+          1496282101812,
+          "d5113a8a-e61a-4df2-b5ad-cfbc85447d6f",
+          421424522,
+          200
+        ],
+        [
+          1496282102052,
+          "d5113a8a-e61a-4df2-b5ad-cfbc85447d6f",
+          236496546,
+          200
+        ],
+        [
+          1496282102389,
+          "b0356fd2-f840-4720-8a1a-c89febc4880e",
+          6359458,
+          200
+        ],
+        [
+          1496282102780,
+          "b0356fd2-f840-4720-8a1a-c89febc4880e",
+          390194291,
+          200
+        ],
+        [
+          1496282103070,
+          "b0356fd2-f840-4720-8a1a-c89febc4880e",
+          288354141,
+          200
+        ],
+        [
+          1496282103389,
+          "f0e37d63-a6ad-4484-897f-5bb256c9c773",
+          6529610,
+          200
+        ],
+        [
+          1496282103760,
+          "f0e37d63-a6ad-4484-897f-5bb256c9c773",
+          370015488,
+          200
+        ],
+        [
+          1496282104015,
+          "f0e37d63-a6ad-4484-897f-5bb256c9c773",
+          253189042,
+          200
+        ],
+        [
+          1496282104390,
+          "59047202-c741-4ebc-be4e-fba9f56e3d95",
+          7534575,
+          200
+        ],
+        [
+          1496282104795,
+          "59047202-c741-4ebc-be4e-fba9f56e3d95",
+          403712926,
+          200
+        ],
+        [
+          1496282105079,
+          "59047202-c741-4ebc-be4e-fba9f56e3d95",
+          282523409,
+          200
+        ],
+        [
+          1496282105391,
+          "4cbf5af8-5576-4437-9d05-bdfe793ce62d",
+          6805247,
+          200
+        ],
+        [
+          1496282105816,
+          "4cbf5af8-5576-4437-9d05-bdfe793ce62d",
+          424394276,
+          200
+        ],
+        [
+          1496282106070,
+          "4cbf5af8-5576-4437-9d05-bdfe793ce62d",
+          251943722,
+          200
+        ],
+        [
+          1496282106390,
+          "0fa24fe6-e6f8-4592-bfc3-24b6506ca03e",
+          7135772,
+          200
+        ],
+        [
+          1496282106809,
+          "0fa24fe6-e6f8-4592-bfc3-24b6506ca03e",
+          416892515,
+          200
+        ],
+        [
+          1496282107060,
+          "0fa24fe6-e6f8-4592-bfc3-24b6506ca03e",
+          249986400,
+          200
+        ],
+        [
+          1496282107389,
+          "a69b7909-17aa-4f68-a091-b5355068e903",
+          6709882,
+          200
+        ],
+        [
+          1496282107824,
+          "a69b7909-17aa-4f68-a091-b5355068e903",
+          433636444,
+          200
+        ],
+        [
+          1496282108086,
+          "a69b7909-17aa-4f68-a091-b5355068e903",
+          260587621,
+          200
+        ]
+      ],
+      "customStats": {},
+      "concurrency": 1,
+      "pendingRequests": 1
+    },
+    {
+      "timestamp": "2017-06-01T01:55:18.989Z",
+      "scenariosCreated": 10,
+      "scenariosCompleted": 10,
+      "requestsCompleted": 30,
+      "latency": {
+        "min": 5.8,
+        "max": 439.5,
+        "median": 267.4,
+        "p95": 429,
+        "p99": null
+      },
+      "rps": {
+        "count": 31,
+        "mean": 2.92
+      },
+      "scenarioDuration": {
+        "min": 655.9,
+        "max": 744.9,
+        "median": 691.8,
+        "p95": 744.9,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "0": 10
+      },
+      "errors": {},
+      "codes": {
+        "200": 30
+      },
+      "matches": 0,
+      "latencies": [
+        [
+          1496282108390,
+          "451d3a76-4645-451e-8500-f8d91f97391f",
+          6320198,
+          200
+        ],
+        [
+          1496282108787,
+          "451d3a76-4645-451e-8500-f8d91f97391f",
+          395764280,
+          200
+        ],
+        [
+          1496282109037,
+          "451d3a76-4645-451e-8500-f8d91f97391f",
+          248536732,
+          200
+        ],
+        [
+          1496282109389,
+          "5c749144-e5a2-4eea-bcee-4dd29a3ad644",
+          6583600,
+          200
+        ],
+        [
+          1496282109811,
+          "5c749144-e5a2-4eea-bcee-4dd29a3ad644",
+          420820155,
+          200
+        ],
+        [
+          1496282110043,
+          "5c749144-e5a2-4eea-bcee-4dd29a3ad644",
+          230501961,
+          200
+        ],
+        [
+          1496282110389,
+          "8b81c415-d427-4e2b-bddd-d9e9913de048",
+          6130499,
+          200
+        ],
+        [
+          1496282110820,
+          "8b81c415-d427-4e2b-bddd-d9e9913de048",
+          429014514,
+          200
+        ],
+        [
+          1496282111074,
+          "8b81c415-d427-4e2b-bddd-d9e9913de048",
+          253049284,
+          200
+        ],
+        [
+          1496282111389,
+          "269f36ac-bd5b-4070-a52e-8d73a3e14908",
+          5771423,
+          200
+        ],
+        [
+          1496282111829,
+          "269f36ac-bd5b-4070-a52e-8d73a3e14908",
+          439549106,
+          200
+        ],
+        [
+          1496282112126,
+          "269f36ac-bd5b-4070-a52e-8d73a3e14908",
+          295055083,
+          200
+        ],
+        [
+          1496282112389,
+          "301f39ab-2dd0-4682-9068-9fcb515d9177",
+          6074507,
+          200
+        ],
+        [
+          1496282112798,
+          "301f39ab-2dd0-4682-9068-9fcb515d9177",
+          407637444,
+          200
+        ],
+        [
+          1496282113061,
+          "301f39ab-2dd0-4682-9068-9fcb515d9177",
+          259445660,
+          200
+        ],
+        [
+          1496282113388,
+          "14135aa6-79f3-458f-a109-601cd6859340",
+          6499055,
+          200
+        ],
+        [
+          1496282113818,
+          "14135aa6-79f3-458f-a109-601cd6859340",
+          428778642,
+          200
+        ],
+        [
+          1496282114118,
+          "14135aa6-79f3-458f-a109-601cd6859340",
+          299281357,
+          200
+        ],
+        [
+          1496282114388,
+          "54d10a87-4981-481b-b210-924c2f09bc9d",
+          6506206,
+          200
+        ],
+        [
+          1496282114805,
+          "54d10a87-4981-481b-b210-924c2f09bc9d",
+          415363961,
+          200
+        ],
+        [
+          1496282115092,
+          "54d10a87-4981-481b-b210-924c2f09bc9d",
+          285442067,
+          200
+        ],
+        [
+          1496282115388,
+          "685a75ea-1aa2-4723-9a15-16c795084f87",
+          6602608,
+          200
+        ],
+        [
+          1496282115794,
+          "685a75ea-1aa2-4723-9a15-16c795084f87",
+          404839571,
+          200
+        ],
+        [
+          1496282116048,
+          "685a75ea-1aa2-4723-9a15-16c795084f87",
+          252963509,
+          200
+        ],
+        [
+          1496282116388,
+          "e710ccd0-8ba1-463e-995c-5c6f94c9f060",
+          6592868,
+          200
+        ],
+        [
+          1496282116795,
+          "e710ccd0-8ba1-463e-995c-5c6f94c9f060",
+          404974630,
+          200
+        ],
+        [
+          1496282117071,
+          "e710ccd0-8ba1-463e-995c-5c6f94c9f060",
+          275325403,
+          200
+        ],
+        [
+          1496282117388,
+          "f47f7d64-0543-490b-b782-ceee593f0cdf",
+          6586495,
+          200
+        ],
+        [
+          1496282117815,
+          "f47f7d64-0543-490b-b782-ceee593f0cdf",
+          425299659,
+          200
+        ],
+        [
+          1496282118106,
+          "f47f7d64-0543-490b-b782-ceee593f0cdf",
+          289310761,
+          200
+        ]
+      ],
+      "customStats": {},
+      "concurrency": 1,
+      "pendingRequests": 6
+    },
+    {
+      "timestamp": "2017-06-01T01:55:28.995Z",
+      "scenariosCreated": 10,
+      "scenariosCompleted": 10,
+      "requestsCompleted": 30,
+      "latency": {
+        "min": 5.8,
+        "max": 432.7,
+        "median": 281.8,
+        "p95": 427.2,
+        "p99": null
+      },
+      "rps": {
+        "count": 30,
+        "mean": 2.83
+      },
+      "scenarioDuration": {
+        "min": 634.7,
+        "max": 748.8,
+        "median": 708.1,
+        "p95": 748.8,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "0": 10
+      },
+      "errors": {},
+      "codes": {
+        "200": 30
+      },
+      "matches": 0,
+      "latencies": [
+        [
+          1496282118389,
+          "7f5af1c8-5a70-4796-a6ae-77d4b1754c07",
+          6690752,
+          200
+        ],
+        [
+          1496282118796,
+          "7f5af1c8-5a70-4796-a6ae-77d4b1754c07",
+          405958118,
+          200
+        ],
+        [
+          1496282119106,
+          "7f5af1c8-5a70-4796-a6ae-77d4b1754c07",
+          309436147,
+          200
+        ],
+        [
+          1496282119389,
+          "65275139-d96a-4292-999e-7be77ed3a76b",
+          7580688,
+          200
+        ],
+        [
+          1496282119816,
+          "65275139-d96a-4292-999e-7be77ed3a76b",
+          425593492,
+          200
+        ],
+        [
+          1496282120074,
+          "65275139-d96a-4292-999e-7be77ed3a76b",
+          255770419,
+          200
+        ],
+        [
+          1496282120388,
+          "fd474b5e-204c-41a9-be48-cf8415a9c732",
+          6747827,
+          200
+        ],
+        [
+          1496282120802,
+          "fd474b5e-204c-41a9-be48-cf8415a9c732",
+          411923540,
+          200
+        ],
+        [
+          1496282121105,
+          "fd474b5e-204c-41a9-be48-cf8415a9c732",
+          301701403,
+          200
+        ],
+        [
+          1496282121388,
+          "3011c34d-eb62-4ea7-b09b-ecf54acd772d",
+          6679273,
+          200
+        ],
+        [
+          1496282121812,
+          "3011c34d-eb62-4ea7-b09b-ecf54acd772d",
+          422629865,
+          200
+        ],
+        [
+          1496282122111,
+          "3011c34d-eb62-4ea7-b09b-ecf54acd772d",
+          297811109,
+          200
+        ],
+        [
+          1496282122388,
+          "3a0cf397-c231-491c-8db6-fba1e506e3f1",
+          6218766,
+          200
+        ],
+        [
+          1496282122802,
+          "3a0cf397-c231-491c-8db6-fba1e506e3f1",
+          413359934,
+          200
+        ],
+        [
+          1496282123074,
+          "3a0cf397-c231-491c-8db6-fba1e506e3f1",
+          270422915,
+          200
+        ],
+        [
+          1496282123388,
+          "397e843e-d6b4-4385-9702-9dc56cc923ae",
+          6311441,
+          200
+        ],
+        [
+          1496282123817,
+          "397e843e-d6b4-4385-9702-9dc56cc923ae",
+          427174698,
+          200
+        ],
+        [
+          1496282124128,
+          "397e843e-d6b4-4385-9702-9dc56cc923ae",
+          297975105,
+          200
+        ],
+        [
+          1496282124390,
+          "2a9494fc-49f0-46db-8664-3dae83ff9da4",
+          7119778,
+          200
+        ],
+        [
+          1496282124812,
+          "2a9494fc-49f0-46db-8664-3dae83ff9da4",
+          420602433,
+          200
+        ],
+        [
+          1496282125060,
+          "2a9494fc-49f0-46db-8664-3dae83ff9da4",
+          246135973,
+          200
+        ],
+        [
+          1496282125387,
+          "67b73d0a-1df4-44dc-b821-417ec0349dfb",
+          5809724,
+          200
+        ],
+        [
+          1496282125780,
+          "67b73d0a-1df4-44dc-b821-417ec0349dfb",
+          391930645,
+          200
+        ],
+        [
+          1496282126015,
+          "67b73d0a-1df4-44dc-b821-417ec0349dfb",
+          233813365,
+          200
+        ],
+        [
+          1496282126388,
+          "f8e601ae-99c9-45a5-a0ef-6bcfa0fdf529",
+          6805473,
+          200
+        ],
+        [
+          1496282126809,
+          "f8e601ae-99c9-45a5-a0ef-6bcfa0fdf529",
+          419474824,
+          200
+        ],
+        [
+          1496282127103,
+          "f8e601ae-99c9-45a5-a0ef-6bcfa0fdf529",
+          293221578,
+          200
+        ],
+        [
+          1496282127388,
+          "0453594d-2126-4e18-beed-0c2156507b8d",
+          6599253,
+          200
+        ],
+        [
+          1496282127822,
+          "0453594d-2126-4e18-beed-0c2156507b8d",
+          432653720,
+          200
+        ],
+        [
+          1496282128033,
+          "0453594d-2126-4e18-beed-0c2156507b8d",
+          210374273,
+          200
+        ]
+      ],
+      "customStats": {},
+      "concurrency": 1,
+      "pendingRequests": 10
+    },
+    {
+      "timestamp": "2017-06-01T01:55:38.999Z",
+      "scenariosCreated": 10,
+      "scenariosCompleted": 10,
+      "requestsCompleted": 31,
+      "latency": {
+        "min": 5.4,
+        "max": 454.4,
+        "median": 244,
+        "p95": 418.8,
+        "p99": null
+      },
+      "rps": {
+        "count": 31,
+        "mean": 2.92
+      },
+      "scenarioDuration": {
+        "min": 609.4,
+        "max": 709,
+        "median": 660,
+        "p95": 709,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "0": 10
+      },
+      "errors": {},
+      "codes": {
+        "200": 31
+      },
+      "matches": 0,
+      "latencies": [
+        [
+          1496282128388,
+          "26153bb8-3eee-49cf-a863-17aafc9475ed",
+          6460963,
+          200
+        ],
+        [
+          1496282128774,
+          "26153bb8-3eee-49cf-a863-17aafc9475ed",
+          384767935,
+          200
+        ],
+        [
+          1496282129083,
+          "26153bb8-3eee-49cf-a863-17aafc9475ed",
+          307825519,
+          200
+        ],
+        [
+          1496282129387,
+          "6f9beb74-a591-447a-bf31-b74e5a3c99fc",
+          6356412,
+          200
+        ],
+        [
+          1496282129796,
+          "6f9beb74-a591-447a-bf31-b74e5a3c99fc",
+          406731609,
+          200
+        ],
+        [
+          1496282130040,
+          "6f9beb74-a591-447a-bf31-b74e5a3c99fc",
+          242817915,
+          200
+        ],
+        [
+          1496282130388,
+          "ab34b7cf-a1d8-49f5-b069-3e21123251de",
+          6417308,
+          200
+        ],
+        [
+          1496282130796,
+          "ab34b7cf-a1d8-49f5-b069-3e21123251de",
+          407267808,
+          200
+        ],
+        [
+          1496282131040,
+          "ab34b7cf-a1d8-49f5-b069-3e21123251de",
+          243587509,
+          200
+        ],
+        [
+          1496282131387,
+          "4ee9ba6c-15b0-4243-93f1-3636b2c4d384",
+          6393854,
+          200
+        ],
+        [
+          1496282131791,
+          "4ee9ba6c-15b0-4243-93f1-3636b2c4d384",
+          402910303,
+          200
+        ],
+        [
+          1496282132037,
+          "4ee9ba6c-15b0-4243-93f1-3636b2c4d384",
+          243989882,
+          200
+        ],
+        [
+          1496282132386,
+          "d86c61f8-cd3d-4d84-8cca-9ba452e60fbc",
+          5367316,
+          200
+        ],
+        [
+          1496282132768,
+          "d86c61f8-cd3d-4d84-8cca-9ba452e60fbc",
+          381107506,
+          200
+        ],
+        [
+          1496282132989,
+          "d86c61f8-cd3d-4d84-8cca-9ba452e60fbc",
+          219763445,
+          200
+        ],
+        [
+          1496282133387,
+          "ea1b9b66-e91a-4623-b0f7-80afb6415db8",
+          6268054,
+          200
+        ],
+        [
+          1496282133808,
+          "ea1b9b66-e91a-4623-b0f7-80afb6415db8",
+          419334584,
+          200
+        ],
+        [
+          1496282134057,
+          "ea1b9b66-e91a-4623-b0f7-80afb6415db8",
+          247821731,
+          200
+        ],
+        [
+          1496282134388,
+          "ab49dfb6-b8d7-41e5-9181-5466759f972d",
+          7131297,
+          200
+        ],
+        [
+          1496282134792,
+          "ab49dfb6-b8d7-41e5-9181-5466759f972d",
+          402828147,
+          200
+        ],
+        [
+          1496282135036,
+          "ab49dfb6-b8d7-41e5-9181-5466759f972d",
+          242838723,
+          200
+        ],
+        [
+          1496282135387,
+          "1c0922e1-898a-4131-83b5-44647f078595",
+          6465440,
+          200
+        ],
+        [
+          1496282135843,
+          "1c0922e1-898a-4131-83b5-44647f078595",
+          454370020,
+          200
+        ],
+        [
+          1496282136089,
+          "1c0922e1-898a-4131-83b5-44647f078595",
+          244631952,
+          200
+        ],
+        [
+          1496282136388,
+          "924432f5-b997-4d02-b566-1f659c26cccb",
+          6818420,
+          200
+        ],
+        [
+          1496282136798,
+          "924432f5-b997-4d02-b566-1f659c26cccb",
+          408674526,
+          200
+        ],
+        [
+          1496282137088,
+          "924432f5-b997-4d02-b566-1f659c26cccb",
+          288961073,
+          200
+        ],
+        [
+          1496282137388,
+          "95bb53eb-a97d-4de5-b014-1c93a1045597",
+          7444810,
+          200
+        ],
+        [
+          1496282137785,
+          "95bb53eb-a97d-4de5-b014-1c93a1045597",
+          395928241,
+          200
+        ],
+        [
+          1496282138034,
+          "95bb53eb-a97d-4de5-b014-1c93a1045597",
+          248068517,
+          200
+        ],
+        [
+          1496282138387,
+          "b8e61d6e-e526-4927-b78c-85e9ec4be23e",
+          6412195,
+          200
+        ]
+      ],
+      "customStats": {},
+      "concurrency": 1,
+      "pendingRequests": 10
+    },
+    {
+      "timestamp": "2017-06-01T01:55:40.390Z",
+      "scenariosCreated": 1,
+      "scenariosCompleted": 2,
+      "requestsCompleted": 5,
+      "latency": {
+        "min": 10,
+        "max": 426.5,
+        "median": 287.2,
+        "p95": null,
+        "p99": null
+      },
+      "rps": {
+        "count": 4,
+        "mean": 2.55
+      },
+      "scenarioDuration": {
+        "min": 701.5,
+        "max": 707,
+        "median": 704.2,
+        "p95": null,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "0": 1
+      },
+      "errors": {},
+      "codes": {
+        "200": 5
+      },
+      "matches": 0,
+      "latencies": [
+        [
+          1496282138815,
+          "b8e61d6e-e526-4927-b78c-85e9ec4be23e",
+          426456077,
+          200
+        ],
+        [
+          1496282139081,
+          "b8e61d6e-e526-4927-b78c-85e9ec4be23e",
+          265420274,
+          200
+        ],
+        [
+          1496282139391,
+          "af4060e9-167c-4159-9c86-7bbc6d4e55f3",
+          10008186,
+          200
+        ],
+        [
+          1496282139798,
+          "af4060e9-167c-4159-9c86-7bbc6d4e55f3",
+          405492739,
+          200
+        ],
+        [
+          1496282140086,
+          "af4060e9-167c-4159-9c86-7bbc6d4e55f3",
+          287205801,
+          200
+        ]
+      ],
+      "customStats": {},
+      "concurrency": 1,
+      "pendingRequests": 1
+    }
+  ]
+};
+  </script>
+
+  <style>
+      h1 {
+        line-height: 200%;
+      }
+
+      body {
+          background-color: #fcfcfc;
+      }
+
+      .container {
+          width: 100%;
+          min-width: 960px;
+      }
+  </style>
+
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="row" id="header">
+  <div class="col-lg-4 col-lg-offset-4">
+    <pre style="font-size: 5pt; background-color: #fcfcfc; border: none;">
+            _   _ _ _                                                _
+  __ _ _ __| |_(_) | | ___ _ __ _   _      _ __ ___ _ __   ___  _ __| |_
+ / _` | '__| __| | | |/ _ \ '__| | | |    | '__/ _ \ '_ \ / _ \| '__| __|
+| (_| | |  | |_| | | |  __/ |  | |_| |    | | |  __/ |_) | (_) | |  | |_
+ \__,_|_|   \__|_|_|_|\___|_|   \__, |    |_|  \___| .__/ \___/|_|   \__|
+                                |___/              |_|
+
+    </pre>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="text-center" id="page-title">Test run on <span id="timestamp">date</span></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-3">
+    <p><strong>Summary</strong></p>
+    <table class="table table-bordered table-hover table-condensed">
+      <tbody>
+        <tr>
+          <td>Test duration</td>
+          <td><span id="testDuration">0</span> sec</td>
+        </tr>
+        <tr>
+          <td>Scenarios created</td>
+          <td><span id="scenariosCreated">0</span></td>
+        </tr>
+
+        <tr>
+          <td>Scenarios completed</td>
+          <td><span id="scenariosCompleted">0</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-lg-5" id="scenarioCountsContainer">
+    <div>
+      <strong>Scenario counts:</strong>
+
+      <p></p>
+
+      <table class="table table-bordered table-hover table-condensed" id="scenarioCounts">
+      </table>
+    </div>
+  </div>
+
+  <div class="col-lg-1">
+    <div id="codesContainer">
+      <strong>Codes</strong>
+
+      <p></p>
+
+      <table class="table table-bordered table-hover table-condensed" id="codes">
+      </table>
+    </div>
+  </div>
+
+  <div class="col-lg-3">
+    <div id="errorsContainer">
+      <strong>Errors</strong>
+
+      <p></p>
+
+      <table class="table table-bordered table-hover table-condensed" id="errors">
+      </table>
+    </div>
+  </div>
+</div> <!-- /.row -->
+
+<div class="row">
+  <div class="text-center col-lg-12">
+    <h2>Charts</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="latency-histogram text-center col-lg-12"></div>
+</div>
+
+<div class="row">
+  <div class="latency text-center col-lg-12"></div>
+</div>
+
+<div class="latency-legend"></div>
+
+<div class="row">
+
+</div>
+
+<div class="row">
+  <div class="concurrency text-center col-lg-12"></div>
+</div>
+
+<div class="row">
+  <div class="rps-mean text-center col-lg-12"></div>
+</div>
+<div class="row">
+  <div class="rps-count text-center col-lg-12"></div>
+</div>
+
+<div class="row">
+  <div class="codes-line text-center col-lg-12"></div>
+</div>
+<div class="row">
+  <div class="errors-line text-center col-lg-12"></div>
+</div>
+
+
+  
+
+
+</div>
+
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <h3 class="text-center">Raw report data</h3>
+    <p>This is the raw JSON stats output that the report was generated from.</p>
+    <div id="editor">
+    </div>
+  </div>
+</div>
+
+<script>
+var editor = ace.edit("editor");
+editor.getSession().setMode("ace/mode/javascript");
+editor.setValue(JSON.stringify(Report, null, 2));
+editor.gotoLine(1);editor.setHighlightActiveLine(false);
+
+var l = _;
+
+$('#timestamp').html(moment(Report.aggregate.timestamp).format('DD MMM YYYY HH:mm:SS'));
+$('#testDuration').html(l.size(Report.intermediate) * 10);
+$('#scenariosCompleted').html(Report.aggregate.scenariosCompleted);
+$('#scenariosCreated').html(Report.aggregate.scenariosCreated);
+
+var markers = [];
+if(l.size(Report.phases) > 0) {
+  markers = l.foldl(Report.phases, function(acc, phase, index) {
+    var label = phase.name || 'Phase ' + (index + 1);
+    var timestamp = (index === 0) ? 0 : Report.phases[index - 1].duration + acc[index - 1].timestamp;
+
+    acc.push({
+      timestamp: timestamp,
+      label: label
+    });
+
+    return acc;
+  }, []);
+}
+
+if (l.size(Report.aggregate.scenarioCounts) > 0) {
+  l.each(Report.aggregate.scenarioCounts, function(count, name) {
+    var $tdName = $('<td>' + name + '</td>');
+    var percentage = Math.round(count / Report.aggregate.scenariosCreated * 100 * 1000) / 1000;
+    var $tdCount = $('<td>' + count + ' (' + percentage + '%)' + '</td>');
+    var $el = $('<tr></tr>')
+      .append($tdName)
+      .append($tdCount)
+      .appendTo($('#scenarioCounts'));
+  });
+} else {
+  $('#scenarioCountsContainer').hide();
+}
+
+if (l.size(Report.aggregate.codes) > 0) {
+  l.each(Report.aggregate.codes, function(count, code) {
+    var anchor = '';
+    if (code >= 100 && code < 200) {
+      anchor = '#1xx_Informational';
+    } else if (code >= 200 && code < 300) {
+      anchor = '#2xx_Success';
+    } else if (code >= 300 && code < 400) {
+      anchor = '#3xx_Redirection';
+    } else if (code >= 400 && code < 500) {
+      anchor = '#4xx_Client_Error';
+    } else if (code >= 500 && code < 600) {
+      anchor = '#5xx_Server_Error';
+    }
+
+    var $a = $('<a>' + code + '</a>').attr('href', 'https://en.wikipedia.org/wiki/List_of_HTTP_status_codes' + anchor);
+    var $td = $('<td></td>').append($a);
+    var $el = $('<tr></tr>')
+      .append($td)
+      .append($('<td>' + count + '</td>'))
+      .appendTo($('#codes'));
+  });
+} else {
+  $('#codesContainer').hide();
+}
+
+if (l.size(Report.aggregate.errors) > 0) {
+  l.each(Report.aggregate.errors, function(count, code) {
+    var $el = $('<tr></tr>')
+      .append($('<td>' + code + '</td>'))
+      .append($('<td>' + count + '</td>'))
+      .appendTo($('#errors'));
+  });
+} else {
+  $('#errorsContainer > p').html('&#10004; Test completed without network or OS errors.');
+}
+
+var histogramData = l.map(Report.aggregate.latency, function(v, k) { return {bin: k, value: v} });
+
+MG.data_graphic({
+  chart_type: 'bar',
+  x_label: 'Percentile',
+  y_label: '(ms)',
+  animate_on_load: true,
+  title: 'Overall Latency Distribution',
+  description: 'Distribution of all observed response latencies',
+  target: '.latency-histogram',
+  data: histogramData,
+  x_accessor: 'bin',
+  y_accessor: 'value',
+  binned: true,
+  height: 250,
+  interpolate: 'monotone',
+  padding_percentage: 0,
+  bar_orientation: 'vertical',
+  width: 450
+});
+
+var chartData = l.map(
+  window.Report.intermediate,
+  function(o,i) {
+    return {
+      timestamp: i*10+10,
+
+      rpsMean: o.rps.mean,
+      rpsCount: o.rps.count,
+      concurrency: o.concurrency,
+      latencyMax: o.latency.max,
+      latencyp99: o.latency.p99,
+      latencyp95: o.latency.p95,
+      latencyMedian: o.latency.median,
+      latencyMin: o.latency.min
+    }
+  });
+
+//
+// Response codes
+//
+
+if (l.size(Report.aggregate.codes) > 0) {
+  var codesData = l.foldl(Report.intermediate, function(acc, o, i) {
+    var res = {};
+    res.timestamp = i*10+10;
+    l.each(o.codes, function(count, code) {
+      res[code] = count;
+    });
+    acc.push(res);
+    return acc;
+  }, []);
+  var uniqueCodes = l.foldl(Report.intermediate, function(acc, o) {
+    l.each(o.codes, function(count, code) {
+      if (l.indexOf(acc, code) === -1) {
+        acc.push(code);
+      }
+    });
+    return acc;
+  }, []);
+
+  MG.data_graphic({
+    x_label: 'Time',
+    y_label: 'Count',
+    title: 'HTTP codes',
+    description: 'Occurence of HTTP response codes',
+    target: '.codes-line',
+    data: codesData,
+    x_accessor: 'timestamp',
+    y_accessor: uniqueCodes,
+    legend: uniqueCodes,
+    right: 50,
+    chart_type: 'line',
+    area: false,
+    markers: markers,
+    width: 900
+  });
+}
+
+//
+// Errors
+//
+
+if (l.size(Report.aggregate.errors) > 0) {
+  var errorData = l.foldl(Report.intermediate, function(acc, o, i) {
+    var res = {};
+    res.timestamp = i*10+10;
+    l.each(o.errors, function(count, name) {
+      res[name] = count;
+    });
+    acc.push(res);
+    return acc;
+  }, []);
+  var uniqueErrors = l.foldl(Report.intermediate, function(acc, o) {
+    l.each(o.errors, function(count, name) {
+      if (l.indexOf(acc, name) === -1) {
+        acc.push(name);
+      }
+    });
+    return acc;
+  }, []);
+
+  MG.data_graphic({
+    title: 'Error Codes',
+    description: 'Occurence of error codes',
+    target: '.errors-line',
+    data: errorData,
+    x_accessor: 'timestamp',
+    y_accessor: uniqueErrors,
+    chart_type: 'line',
+    area: false,
+    markers: markers
+  });
+
+}
+
+//
+// Latency
+//
+MG.data_graphic({
+  chart_type: 'line',
+  x_label: 'Time',
+  y_label: '(ms)',
+  animate_on_load: true,
+  area: false,
+  title: "Latency At Intervals",
+  description: "Latency values at different points during the test run",
+  data: chartData,
+  target: '.latency',
+  width: 900,
+  x_accessor: 'timestamp',
+  y_accessor: ['latencyMin', 'latencyMedian', 'latencyp95', 'latencyMax'],
+  legend: ['min', 'p50', 'p95', 'max'],
+  //legend_target: '.latency-legend',
+  right: 50,
+  interpolate: 'monotone',
+  mouseover: function(d, i) {
+  },
+  markers: markers
+        });
+
+            MG.data_graphic({
+            animate_on_load: true,
+            area: false,
+            y_label: 'Count',
+            x_label: 'Time',
+            title: 'Concurrent users',
+            description: 'Concurrent users',
+            data: chartData,
+            target: '.concurrency',
+            x_accessor: 'timestamp',
+            y_accessor: ['concurrency'],
+            interpolate: 'monotone',
+            markers: markers,
+            width: 900
+            });
+
+MG.data_graphic({
+  animate_on_load: true,
+  area: false,
+  y_label: 'Count',
+  x_label: 'Time',
+  title: 'Mean RPS',
+  description: 'Mean requests per second',
+  data: chartData,
+  target: '.rps-mean',
+  x_accessor: 'timestamp',
+  y_accessor: ['rpsMean'],
+  interpolate: 'monotone',
+  markers: markers,
+  width: 900
+});
+
+MG.data_graphic({
+  animate_on_load: true,
+  area: false,
+  y_label: 'Count',
+  x_label: 'Time',
+  title: 'RPS Count',
+  description: 'Count of requests per second',
+  data: chartData,
+  target: '.rps-count',
+  x_accessor: 'timestamp',
+  y_accessor: ['rpsCount'],
+  interpolate: 'monotone',
+  markers: markers,
+  width: 900
+});
+</script>
+<div id="footer">
+  <footer>This report was created with <a href="https://artillery.io">Artillery</a> - free open-source load-testing for HTTP and WebSockets</footer>
+</div>
+</body>
+</html>
