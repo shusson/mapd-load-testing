@@ -24,7 +24,8 @@ artillery report result.json
 
 ### Structure of results
  - `[x]gb` # x: aprox size of db tested
-  - `v[x]m[y]g[z]` # x: cpus, y: cpu mem, z: number of k80 gpus
+
+   -- `v[x]m[y]g[z]` # x: cpus, y: cpu mem, z: number of k80 gpus
 
 ### Table schema
 ```bash
