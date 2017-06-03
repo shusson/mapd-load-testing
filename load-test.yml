@@ -31,46 +31,17 @@ scenarios:
         capture:
           json: $[4]['0']['str']
           as: "key"
-    # - log: "[1,\"sql_execute\",1,0,{\"1\":{\"str\":\"{{ key }}\"},\"2\":{\"str\":\"SELECT * FROM MGRB WHERE (chromosome = '2') AND (ALT = 'T') AND (c4_REF = 'C') AND ((AF >= 0.9166666666666666 AND AF <= 1)) LIMIT 20 OFFSET 0\"},\"3\":{\"tf\":1},\"4\":{\"str\":\"19\"},\"5\":{\"i32\":-1}}]"
-
+    # Represents a binned historgram chart query
     - post:
         url: "/"
         headers:
           Content-Length: 365
         body:
           "[1,\"sql_execute\",1,0,{\"1\":{\"str\":\"{{ key }}\"},\"2\":{\"str\":\"SELECT cast((cast(c3_START as float) - 52) * 4.012193408842492e-7 as int) as key0,AVG(AF) AS afavg FROM mgrb WHERE (c3_START >= 52 AND c3_START <= 249240280) AND AF IS NOT NULL GROUP BY key0 HAVING key0 >= 0 AND key0 < 100 ORDER BY key0\"},\"3\":{\"tf\":1},\"4\":{\"str\":\"0\"},\"5\":{\"i32\":-1}}]"
-
+    # Represents a paginated table query
     - post:
         url: "/"
         headers:
           Content-Length: 270
         body:
           "[1,\"sql_execute\",1,0,{\"1\":{\"str\":\"{{ key }}\"},\"2\":{\"str\":\"SELECT * FROM MGRB WHERE (chromosome = '2') AND (ALT = 'T') AND (c4_REF = 'C') AND ((AF >= 0.9166666666666666 AND AF <= 1)) LIMIT 20 OFFSET 0\"},\"3\":{\"tf\":1},\"4\":{\"str\":\"1\"},\"5\":{\"i32\":-1}}]"
-
-    # - post:
-    #     url: "/"
-    #     headers:
-    #       Content-Length: 208
-    #     body:
-    #      "[1,\"sql_execute\",1,0,{\"1\":{\"str\":\"{{ key }}\"},\"2\":{\"str\":\"SELECT chromosome as key0,COUNT(*) AS val FROM mgrb GROUP BY key0 ORDER BY key0\"},\"3\":{\"tf\":1},\"4\":{\"str\":\"2\"},\"5\":{\"i32\":-1}}]"
-    #
-    # - post:
-    #     url: "/"
-    #     headers:
-    #       Content-Length: 215
-    #     body:
-    #      "[1,\"sql_execute\",1,0,{\"1\":{\"str\":\"{{ key }}\"},\"2\":{\"str\":\"SELECT ALT as key0,COUNT(*) AS val FROM mgrb GROUP BY key0 ORDER BY val DESC LIMIT 100\"},\"3\":{\"tf\":1},\"4\":{\"str\":\"2\"},\"5\":{\"i32\":-1}}]"
-    #
-    # - post:
-    #     url: "/"
-    #     headers:
-    #       Content-Length: 218
-    #     body:
-    #      "[1,\"sql_execute\",1,0,{\"1\":{\"str\":\"{{ key }}\"},\"2\":{\"str\":\"SELECT c4_REF as key0,COUNT(*) AS val FROM mgrb GROUP BY key0 ORDER BY val DESC LIMIT 100\"},\"3\":{\"tf\":1},\"4\":{\"str\":\"2\"},\"5\":{\"i32\":-1}}]"
-    #
-    # - post:
-    #     url: "/"
-    #     headers:
-    #       Content-Length: 298
-    #     body:
-    #      "[1,\"sql_execute\",1,0,{\"1\":{\"str\":\"{{ key }}\"},\"2\":{\"str\":\"SELECT cast((cast(AF as float) - 0) * 12 as int) as key0,COUNT(*) AS val FROM mgrb WHERE (AF >= 0 AND AF <= 1) GROUP BY key0 HAVING key0 >= 0 AND key0 < 12 ORDER BY key0\"},\"3\":{\"tf\":1},\"4\":{\"str\":\"2\"},\"5\":{\"i32\":-1}}]"
